@@ -1,0 +1,75 @@
+.HolaMundo{
+    position:relative;
+    width: 52rem;
+}
+
+.HolaMundo::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: 'Hola Mundo en GCP';
+    text-transform: capitalize;
+    font-family: arial;
+    color: #fff;
+    font-size: 5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0%;
+    height: auto;
+  }
+
+  .HolaMundo::after {
+    content: "|";
+    font-size: 5rem;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  body{
+    background: black;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+/*las letras se van escribiendo segun el tiemmpo de animacion*/
+@keyframes AnimatedTabKey {
+    to {
+      width: 100%;
+    }
+}
+  
+/*La linea de escritura aparece y desaparece*/
+@keyframes AnimateLine{
+     from {    
+        color: transparent;   
+     }  
+     to {    
+        color: #fff;  
+    }
+}
+  
+/*Animacion de desplazamiento de la linea de escritura*/
+@keyframes Desplaced {
+    to {
+      left: 100%;
+    }
+}
+
+.HolaMundo::before{
+    
+    animation: 4s infinite steps(10) AnimatedTabKey;
+
+}
+
+.HolaMundo::after{
+
+    animation: 4s AnimateLine infinite, Desplaced 4s infinite steps(10);
+
+}
